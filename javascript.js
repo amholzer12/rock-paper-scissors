@@ -19,33 +19,59 @@ function playRound(computerSelection, playerSelection) {
     // console.log(playerSelection)
     if (computerSelection == "rock") {
         if (playerSelectionLowerCase == "rock") {
-            return "You both chose rock, you tie?"
+            return "Tie"
         } else if (playerSelectionLowerCase == "paper") {
-            return "Paper beats rock, you win!"
+            return "Win"
         } else {
-            return "Rock beats scissors, you lose."
+            return "Lose"
         }
     } else if (computerSelection == "paper") {
         if (playerSelectionLowerCase == "rock") {
-            return "Paper beats rock, you lose."
+            return "Lose"
         } else if (playerSelectionLowerCase == "paper") {
-            return "You both chose paper, you tie?"
+            return "Tie"
         } else {
-            return "Scissors beat paper, you win!"
+            return "Win"
         }
     } else {
         if (playerSelectionLowerCase == "rock") {
-            return "Rock beats scissors, you win!"
+            return "Win"
         } else if (playerSelectionLowerCase == "paper") {
-            return "Scissors beat paper, you lose."
+            return "Lose"
         } else {
-            return "You both chose scissors, you tie?"
+            return "Tie"
         }
     }
 
     // TO DO!!! determines who wins and why with case sensitity
 }
+function game() {
+    let runningScore = 0;
+    for (let i = 0; i < 5; i++) {
+        let choice = prompt("Choose your weapon", "rock, paper, or scissors!")
+        const result = playRound(getComputerChoice(), choice)
+        console.log(result);
+        // console.log(`You ${result} the round`);
+        if(result == "Win") {
+            // console.log("You win the round");
+            //we do something
+            runningScore++;
+        } else if(result == "Lose") {
+            // console.log("You lose the round");
+            runningScore--;
+        } else {
+            runningScore + 0;
+        }
+    }
+    if (runningScore > 0) {
+        return "You win the game!"
+    } else if (runningScore < 0) {
+        return "You lose the game."
+    } else {
+        return "You tied, play again!"
+    }
+}
 
-
-console.log(getComputerChoice())
-console.log(playRound(getComputerChoice(),"Paper"))
+console.log(game())
+// console.log(getComputerChoice())
+// console.log(playRound(getComputerChoice(),"Paper"))
